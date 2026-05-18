@@ -37,9 +37,8 @@ export function KanbanColumn({ columnId, items, children }: KanbanColumnProps) {
             No tasks yet
           </p>
         ) : (
-          items.map((item) => <KanbanCard key={item.id} item={item} />)
+          children ?? items.map((item) => <KanbanCard key={item.id} item={item} />)
         )}
-        {children}
       </div>
     </section>
   )
