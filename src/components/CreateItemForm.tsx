@@ -57,17 +57,17 @@ export function CreateItemForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-xl border border-[var(--color-border)] bg-[var(--color-panel)] p-4 shadow-sm"
+      className="sticky top-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-panel)] p-5 shadow-[0_1px_2px_rgba(15,15,15,0.04)]"
       data-testid="create-item-form"
     >
       <h2 className="text-sm font-semibold text-[var(--color-ink)]">New task</h2>
-      <p className="mt-1 text-xs text-[var(--color-muted)]">
-        Assign a Rick and Morty character to every task.
+      <p className="mt-1 text-xs leading-relaxed text-[var(--color-muted)]">
+        Every task needs a Rick and Morty character owner.
       </p>
 
-      <div className="mt-4 space-y-3">
+      <div className="mt-5 space-y-4">
         <div>
-          <label htmlFor="title" className="mb-1 block text-sm font-medium text-[var(--color-ink)]">
+          <label htmlFor="title" className="mb-1.5 block text-sm font-medium text-[var(--color-ink)]">
             Title
           </label>
           <input
@@ -76,17 +76,18 @@ export function CreateItemForm({
             value={title}
             onChange={(event) => setTitle(event.target.value)}
             disabled={disabled}
-            className="w-full rounded-lg border border-[var(--color-border)] bg-white px-3 py-2 text-sm shadow-sm outline-none focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 disabled:opacity-60"
+            className="w-full rounded-lg border border-[var(--color-border)] bg-white px-3 py-2.5 text-sm shadow-sm outline-none transition focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/15 disabled:opacity-60"
             placeholder="What needs doing?"
           />
         </div>
 
+        <motion></motion>
         <div>
           <label
             htmlFor="description"
-            className="mb-1 block text-sm font-medium text-[var(--color-ink)]"
+            className="mb-1.5 block text-sm font-medium text-[var(--color-ink)]"
           >
-            Description <span className="text-[var(--color-muted)]">(optional)</span>
+            Description <span className="font-normal text-[var(--color-muted)]">(optional)</span>
           </label>
           <textarea
             id="description"
@@ -95,7 +96,7 @@ export function CreateItemForm({
             onChange={(event) => setDescription(event.target.value)}
             disabled={disabled}
             rows={3}
-            className="w-full resize-y rounded-lg border border-[var(--color-border)] bg-white px-3 py-2 text-sm shadow-sm outline-none focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 disabled:opacity-60"
+            className="w-full resize-y rounded-lg border border-[var(--color-border)] bg-white px-3 py-2.5 text-sm shadow-sm outline-none transition focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/15 disabled:opacity-60"
             placeholder="Add context"
           />
         </div>
@@ -109,19 +110,19 @@ export function CreateItemForm({
         />
 
         {validationError ? (
-          <p className="text-xs text-red-600" role="alert">
+          <p className="rounded-md bg-red-50 px-3 py-2 text-xs text-red-700" role="alert">
             {validationError}
           </p>
         ) : null}
 
         {loadingCharacters ? (
-          <p className="text-xs text-[var(--color-muted)]">Loading characters…</p>
+          <p className="text-xs text-[var(--color-muted)]">Loading characters from the API…</p>
         ) : null}
 
         <button
           type="submit"
           disabled={disabled}
-          className="w-full rounded-lg bg-[var(--color-ink)] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-full rounded-lg bg-[var(--color-ink)] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[#2f2d28] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] disabled:cursor-not-allowed disabled:opacity-50"
         >
           Add to To Do
         </button>

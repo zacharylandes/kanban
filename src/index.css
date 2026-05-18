@@ -5,9 +5,10 @@
   --color-surface: #f7f6f3;
   --color-panel: #ffffff;
   --color-border: #e8e6e1;
-  --color-muted: #6b6b6b;
+  --color-muted: #787774;
   --color-ink: #37352f;
-  --color-accent: #2eaadc;
+  --color-accent: #2383e2;
+  --color-accent-soft: #e7f3ff;
 }
 
 body {

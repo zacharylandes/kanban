@@ -17,7 +17,7 @@ export function CharacterSelect({
 }: CharacterSelectProps) {
   return (
     <div>
-      <label htmlFor="character" className="mb-1 block text-sm font-medium text-[var(--color-ink)]">
+      <label htmlFor="character" className="mb-1.5 block text-sm font-medium text-[var(--color-ink)]">
         Character
       </label>
       <select
@@ -26,7 +26,7 @@ export function CharacterSelect({
         value={value}
         disabled={disabled}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full rounded-lg border border-[var(--color-border)] bg-white px-3 py-2 text-sm text-[var(--color-ink)] shadow-sm outline-none focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 disabled:opacity-60"
+        className="w-full rounded-lg border border-[var(--color-border)] bg-white px-3 py-2.5 text-sm text-[var(--color-ink)] shadow-sm outline-none transition focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/15 disabled:opacity-60"
       >
         <option value="">Select a character</option>
         {characters.map((character) => (
@@ -35,7 +35,9 @@ export function CharacterSelect({
           </option>
         ))}
       </select>
-      {error ? <p className="mt-1 text-xs text-red-600">{error}</p> : null}
+      {error ? (
+        <p className="mt-1.5 rounded-md bg-red-50 px-3 py-2 text-xs text-red-700">{error}</p>
+      ) : null}
     </div>
   )
 }
