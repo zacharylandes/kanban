@@ -76,7 +76,7 @@ Visit `http://localhost:8080`.
 
 1. Create a new application in Coolify and connect this repository.
 2. Choose **Dockerfile** deployment (not Nixpacks).
-3. Set the container port to **80** (or **3000** — nginx listens on both). Do not use a Node dev-server port unless you change the image.
+3. Set **Ports Exposes** to **80** (recommended). This image also listens on 300 and 3000 if Coolify auto-detects the wrong port.
 4. **Domains:** enter hostnames only, e.g. `kanban.zacharylandes.com` — not full URLs with `https://`.
 5. No backend service or runtime environment variables are required.
 6. Deploy — Coolify builds the multi-stage image (Node build → nginx static serve).
