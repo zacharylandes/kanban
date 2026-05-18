@@ -81,7 +81,6 @@ export function CreateItemForm({
           />
         </div>
 
-        <motion></motion>
         <div>
           <label
             htmlFor="description"
