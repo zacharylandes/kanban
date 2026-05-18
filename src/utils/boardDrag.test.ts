@@ -96,6 +96,14 @@ describe('applyDrag', () => {
     expect(result.movedToDone).toBe(false)
   })
 
+  it('reorders within Doing without celebration', () => {
+    const initial = board({ doing: [rick, morty, summer] })
+    const result = applyDrag(initial, 'c', 'a')
+
+    expect(result.board.doing.map((item) => item.id)).toEqual(['c', 'a', 'b'])
+    expect(result.movedToDone).toBe(false)
+  })
+
   it('returns no-op when over is null', () => {
     const initial = createBoardWithItem(rick)
     const result = applyDrag(initial, 'a', null)

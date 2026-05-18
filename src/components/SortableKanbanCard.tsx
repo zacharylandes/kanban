@@ -25,7 +25,7 @@ export function SortableKanbanCard({ item, columnId }: SortableKanbanCardProps) 
     <div
       ref={setNodeRef}
       style={style}
-      className={isDragging ? 'z-10' : undefined}
+      className={`touch-none ${isDragging ? 'z-10 cursor-grabbing' : 'cursor-grab'}`}
       {...attributes}
       {...listeners}
     >
