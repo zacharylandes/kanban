@@ -76,11 +76,18 @@ Visit `http://localhost:8080`.
 
 1. Create a new application in Coolify and connect this repository.
 2. Choose **Dockerfile** deployment (not Nixpacks).
-3. Expose port **80** on the container.
-4. No backend service or runtime environment variables are required.
-5. Deploy — Coolify builds the multi-stage image (Node build → nginx static serve).
+3. Set the container port to **80** (or **3000** — nginx listens on both). Do not use a Node dev-server port unless you change the image.
+4. **Domains:** enter hostnames only, e.g. `kanban.zacharylandes.com` — not full URLs with `https://`.
+5. No backend service or runtime environment variables are required.
+6. Deploy — Coolify builds the multi-stage image (Node build → nginx static serve).
 
 The nginx config serves the Vite `dist` output and falls back to `index.html` for client-side routing.
+
+### Bad gateway (502)
+
+Usually means the reverse proxy is hitting the wrong container port. This app serves static files with **nginx on port 80** (also 3000 for misconfigured proxies). In Coolify → your app → **Configuration** → set **Ports Exposes** / **Port** to `80`, save, and redeploy.
+
+If **Domains** contains `https://kanban.example.com`, remove the scheme and use `kanban.example.com` only.
 
 ## License
 
