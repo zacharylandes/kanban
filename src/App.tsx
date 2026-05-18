@@ -1,8 +1,11 @@
+import { CreateItemForm } from './components/CreateItemForm'
 import { KanbanBoard } from './components/KanbanBoard'
 import { useBoardState } from './hooks/useBoardState'
+import { useCharacters } from './hooks/useCharacters'
 
 function App() {
-  const { board } = useBoardState()
+  const { board, addItem } = useBoardState()
+  const { characters, loading, error } = useCharacters()
 
   return (
     <div className="min-h-screen">
@@ -14,7 +17,13 @@ function App() {
           Track tasks across To Do, Doing, and Done.
         </p>
       </header>
-      <main className="mx-auto max-w-6xl px-4 py-6 md:px-6">
+      <main className="mx-auto grid max-w-6xl gap-6 px-4 py-6 md:grid-cols-[280px_1fr] md:px-6">
+        <CreateItemForm
+          characters={characters}
+          loadingCharacters={loading}
+          charactersError={error}
+          onCreate={addItem}
+        />
         <KanbanBoard board={board} />
       </main>
     </div>

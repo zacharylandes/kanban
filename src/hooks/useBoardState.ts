@@ -5,10 +5,10 @@ import { createEmptyBoard } from '../types/kanban'
 export function useBoardState(initialState: BoardState = createEmptyBoard()) {
   const [board, setBoard] = useState<BoardState>(initialState)
 
-  const addItem = useCallback((item: KanbanItem) => {
+  const addItem = useCallback((item: Omit<KanbanItem, 'id'>) => {
     setBoard((prev) => ({
       ...prev,
-      todo: [...prev.todo, item],
+      todo: [...prev.todo, { ...item, id: crypto.randomUUID() }],
     }))
   }, [])
 
