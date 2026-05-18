@@ -4,8 +4,9 @@ import App from './App'
 import { renderWithProviders } from './test/test-utils'
 
 describe('App', () => {
-  it('renders without crashing', () => {
+  it('renders the kanban board', () => {
     renderWithProviders(<App />)
-    expect(screen.getByText(/kanban board loading/i)).toBeInTheDocument()
+    expect(screen.getByTestId('kanban-board')).toBeInTheDocument()
+    expect(screen.getByText(/rick & morty kanban/i)).toBeInTheDocument()
   })
 })
